@@ -1,3 +1,7 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin') // 上线压缩去除console等信息
+const CompressionWebpackPlugin = require('compression-webpack-plugin') // 开启gzip压缩
+
+
 const proxyTargetMap = {
   //配置代理url
   dev: 'https://xxx.xxx.com/',
@@ -53,6 +57,38 @@ module.exports = {
     requireModuleExtension: true, //启用CSS modules for all css / pre-processor files.
   },
   pages: pages,
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      // 开启gzip压缩
+      const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i
+      config.plugins.push(
+        new CompressionWebpackPlugin({
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: productionGzipExtensions,
+          threshold: 10240,
+          minRatio: 0.8
+        })
+      )
+      //生成环境执行，开发环境保留log， 上线压缩去除console等信息
+      config.plugins.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            warnings: false,
+            compress: {
+              drop_console: true,
+              drop_debugger: false,
+              pure_funcs: ['console.log'] // 移除console
+            }
+          },
+          sourceMap: false,
+          parallel: true
+        })
+      )
+    }
+  },
+
+  //代理、服务配置
   devServer: {
     open: true, // 启动服务后是否打开浏览器
     host: "0.0.0.0",

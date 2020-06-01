@@ -4,12 +4,12 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin') // 开启
 
 const proxyTargetMap = {
   //配置代理url
-  dev: 'https://xxx.xxx.com/',
+  dev: 'https://douban.uieee.com',
   test: 'http://47.105.71.81:3306',
   prod: 'http://192.168.11.178:3001'
 }
 
-let proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
+let proxyTarget = proxyTargetMap[process.env.VUE_APP_CURRENTMODE] || proxyTargetMap.prod
 let publicPath = process.env.NODE_ENV === 'production' ? '/' : '/';
 
 //配置pages多页面获取当前文件夹下的html和js
@@ -32,7 +32,7 @@ function getEntry(globPath) {
       entry: 'src/' + tmp[0] + '/' + tmp[1] + '/main.js',
       template: fileIs.length ? 'src/' + tmp[0] + '/' + tmp[1] + '/' + tmp[1] + ".html" : "public/index.html",
       title: "",
-      filename: tmp[1] + ".html",
+      filename: process.env.NODE_ENV !== 'production' ? tmp[1] + ".html" : 'html/' + tmp[1] + ".html",
       chunks: ['chunk-vendors', 'chunk-common', pathname]
     };
   });
@@ -42,7 +42,6 @@ function getEntry(globPath) {
 let objectProject = getEntry('./src/pages/**?/');
 let pages = {};
 pages = objectProject
-
 
 module.exports = {
   publicPath: publicPath, // 部署应用包时的基本 URL
@@ -97,13 +96,13 @@ module.exports = {
     hotOnly: false, //是否配置热更新
     // 设置代理，用来解决本地开发跨域问题，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
     proxy: {
-      "/api": {
+      "/apis": {
         target: proxyTarget, // 目标代理接口地址
         secure: false,
         changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
-        ws: true, // 是否启用websockets
+        // ws: true, // 是否启用websockets
         pathRewrite: {
-          "^/api": "/"
+          "^/apis": ""
         }
       }
     }

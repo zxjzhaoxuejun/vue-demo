@@ -89,6 +89,10 @@ module.exports = {
 
   //代理、服务配置
   devServer: {
+    overlay: {
+      warnings: true,
+      errors: false
+    },
     open: true, // 启动服务后是否打开浏览器
     host: "0.0.0.0",
     port: 8080, // 服务端口

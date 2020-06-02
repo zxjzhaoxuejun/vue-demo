@@ -1,3 +1,12 @@
+/**
+ * 传入对象
+ * {
+ * url:'',
+ * type:'POST' |'GET'|'PUT',
+ * data:'',
+ * loading:true | false
+ * }
+ */
 import axios from 'axios';
 import {
   Message,

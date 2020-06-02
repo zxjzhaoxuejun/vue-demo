@@ -14,6 +14,9 @@ export default {
       msg: ""
     };
   },
+  mounted() {
+    // console.log(xxx);
+  },
   methods: {
     btn() {
       apiAxios({
@@ -23,9 +26,13 @@ export default {
           start: 1,
           count: 2
         }
-      }).then(res => {
-        console.log(res);
-      });
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(e => {
+          this.$throw(e);
+        });
     },
     postbtn() {
       apiAxios({

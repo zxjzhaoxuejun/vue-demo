@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>|
+      <router-link to="/vuex">Vuex</router-link>|
       <a href="../../../public/page2.html">About</a>
     </div>
     <router-view />

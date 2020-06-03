@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import apiAxios from "./../https/axios";
+import apiAxios from "./../network/axios";
 export default {
   data() {
     return {
@@ -31,7 +31,7 @@ export default {
           console.log(res);
         })
         .catch(e => {
-          this.$throw(e);
+          console.log(e);
         });
     },
     postbtn() {

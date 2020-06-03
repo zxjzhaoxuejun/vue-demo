@@ -4,7 +4,7 @@ const homeRoute = [{
     component: () => import('../../components/Home.vue')
   },
   {
-    path: '/public/page2.html',
+    path: '/public/detailsPage.html',
     name: 'About',
     component: () => import('../../components/Lang.vue')
   }

@@ -3,11 +3,11 @@ import App from './App.vue'
 import i18n from '../../components/i18n'
 import router from '../../router'
 import store from '../../store'
-
+import './../../directive/track.js'
 
 Vue.config.productionTip = false
 
-//系统错误捕获
+//错误捕获
 Vue.config.errorHandler = function (err, vm, info) {
   console.log('进来了')
   console.error('抛出全局异常')

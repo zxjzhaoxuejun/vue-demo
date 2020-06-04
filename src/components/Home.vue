@@ -25,7 +25,8 @@ export default {
         data: {
           start: 1,
           count: 2
-        }
+        },
+        loading: true
       })
         .then(res => {
           console.log(res);

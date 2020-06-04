@@ -25,16 +25,26 @@ if (env === 'development') {
 
 
 const apiAxios = (options) => {
-  let loadingInstance = Loading.service({
-    fullscreen: true,
-    text: '加载中...'
-  });
+  let loading = options.loading ? false : true;
+  // let loadingInstance = Loading.service({
+  //   fullscreen: true,
+  //   text: '加载中...'
+  // });
+  let loadingInstance = {};
+  if (loading) {
+    loadingInstance = Loading.service({
+      fullscreen: true,
+      text: '加载中...'
+    });
+  }
   //请求拦截(必须放在配置axios前面)
   axios.interceptors.request.use(config => {
     return config;
   }, error => {
     // 请求错误回调
-    loadingInstance.close();
+    if (loading) {
+      loadingInstance.close();
+    }
     Promise.reject(error)
   });
   //响应拦截(必须放在配置axios前面)
@@ -100,13 +110,18 @@ const apiAxios = (options) => {
     } else {
       apiData['data'] = options.data;
     }
+
     axios(
       apiData
     ).then(response => {
-      loadingInstance.close();
+      if (loading) {
+        loadingInstance.close();
+      }
       resolve(response.data)
     }).catch(err => {
-      loadingInstance.close();
+      if (loading) {
+        loadingInstance.close();
+      }
       reject(err);
     });
   })

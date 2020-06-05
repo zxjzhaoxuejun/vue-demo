@@ -8,6 +8,7 @@
 
 <script>
 import apiAxios from "./../network/axios";
+import "./../../public/mock";
 export default {
   data() {
     return {
@@ -38,11 +39,11 @@ export default {
     postbtn() {
       apiAxios({
         type: "POST",
-        url: "/v2/movie/coming_soon",
-        data: {
-          start: 1,
-          count: 2
-        }
+        url: "/user/list"
+        // data: {
+        //   start: 1,
+        //   count: 2
+        // }
       }).then(res => {
         console.log(res);
       });

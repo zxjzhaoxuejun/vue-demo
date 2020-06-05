@@ -16,7 +16,7 @@ import {
 let env = process.env.NODE_ENV;
 let root = '';
 if (env === 'development') {
-  root = 'apis';
+  // root = 'apis';
 } else if (env === 'production') {
   root = '';
 } else {
@@ -26,10 +26,6 @@ if (env === 'development') {
 
 const apiAxios = (options) => {
   let loading = options.loading ? false : true;
-  // let loadingInstance = Loading.service({
-  //   fullscreen: true,
-  //   text: '加载中...'
-  // });
   let loadingInstance = {};
   if (loading) {
     loadingInstance = Loading.service({

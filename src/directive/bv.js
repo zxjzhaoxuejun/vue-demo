@@ -53,7 +53,7 @@ class Exposure {
           } else {
             self.storeIntoLocalstorage(self.dotDataArr);
             if (self.dotDataArr.length > 0) {
-              //，只要有新的ctm进来  接下来如果没增加  自动2秒后打
+              //，只要有新的ctm进来  接下来如果没增加  自动2秒后打点
               self._timer = window.setTimeout(function () {
                 self.dot();
               }, 2000)

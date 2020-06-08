@@ -6,7 +6,7 @@
       <a href="../../../public/detailsPage.html">About</a>
     </div>
     <router-view />
-    <div v-log v-for="item in list" :key="item.id" :data-dot="item.name">{{item.id}}</div>
+    <div v-log v-for="item in list" :key="item.id" :data-dot="item.id" :name="item.name">{{item.id}}</div>
   </div>
 </template>
 <script>

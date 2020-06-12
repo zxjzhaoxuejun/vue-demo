@@ -6,7 +6,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+  <link rel="shortcut icon" href="https://qneventsource.mmantou.cn/faviconico.png" type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://qneventsource.mmantou.cn/faviconico.png?imageView2/2/w/60/h/60/interlace/1|imageslim"
+    type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://qneventsource.mmantou.cn/faviconico.png?imageView2/2/w/76/h/76/interlace/1|imageslim"
+    type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://qneventsource.mmantou.cn/faviconico.png?imageView2/2/w/120/h/120/interlace/1|imageslim"
+    type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://qneventsource.mmantou.cn/faviconico.png?imageView2/2/w/152/h/152/interlace/1|imageslim"
+    type="image/x-icon">
+
+  <!-- Twitter的meta tags -->
+  <meta property="twitter:url"
+    content="https://yooul.com/share/share.php?post_uuid=9463af08-660d-11ea-9965-4ffecca286d7&amp;locale=zh-CN&amp;hide=0">
+  <meta property="twitter:type" content="article">
+  <meta property="twitter:title" content="Netflix在午夜<br>有一些电影推荐吗？">
+  <meta property="twitter:description" content="Netflix在午夜<br>有一些电影推荐吗？">
+  <meta property="twitter:image"
+    content="https://qnidyooulimage.mmantou.cn/FmQeJquE5Q_oMbGD_Td0Q8BjoRve.jpg?imageView2/2/w/200/h/200/interlace/1|imageslim">
+  <meta name="twitter:image:src"
+    content="https://qnidyooulimage.mmantou.cn/FmQeJquE5Q_oMbGD_Td0Q8BjoRve.jpg?imageView2/2/w/1200/interlace/1|imageslim">
+
+
+  <!-- facebook -->
+  <meta property="fb:app_id" content="748486512258997">
+  <meta property="og:site_name" content="m.dhgate.com">
+  <meta property="og:url"
+    content="https://m.dhgate.com/product/2020-los-angeles-cap-laker-23-james-basketball/507015398.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Netflix在午夜<br>有一些电影推荐吗？">
+  <meta property="og:description"
+    content="I found some amazing stuff, open it to learn more! Don't wait:https://m.dhgate.com/product/2020-los-angeles-cap-laker-23-james-basketball/507015398.html">
+  <meta property="og:image"
+    content="https://www.dhresource.com/100x100/f2/albu/g10/M01/A2/40/rBVaWV3cvj-ALInFAADt5K1z0x4715.jpg">
+
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 </head>
 
 <body>
@@ -16,6 +57,10 @@
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <!-- Your embedded video player code -->
+  <div id="fb-root"></div>
+  <div class="fb-video" data-href="https://www.facebook.com/facebook/videos/10153231379946729/" data-width="500"
+    data-allowfullscreen="true"></div>
 </body>
 <script type="text/javascript">
   var _maq = _maq || [];
@@ -28,6 +73,21 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ma, s);
   })();
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '619487934836296',
+      xfbml: true,
+      version: 'v3.2'
+    });
+
+    // Get Embedded Video Player API Instance
+    var my_video_player;
+    FB.Event.subscribe('xfbml.ready', function (msg) {
+      if (msg.type === 'video') {
+        my_video_player = msg.instance;
+      }
+    });
+  };
 </script>
 
 </html>

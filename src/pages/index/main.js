@@ -4,7 +4,12 @@ import i18n from '../../components/i18n'
 import router from '../../router'
 import store from '../../store'
 import './../../directive/track.js'
-
+import Share from "vue-social-share";
+import vshare from 'vshare'
+// import Share from 'vue-social-sharing'
+import "vue-social-share/dist/client.css";
+Vue.use(Share);
+Vue.use(vshare);
 Vue.config.productionTip = false
 
 //错误捕获

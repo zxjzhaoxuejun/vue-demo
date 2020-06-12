@@ -6,8 +6,11 @@
 export default {
   data() {
     return {
-      msg: ""
+      ldd: [{ id: 1 }]
     };
+  },
+  created() {
+    console.log(this.ldd);
   },
   methods: {}
 };

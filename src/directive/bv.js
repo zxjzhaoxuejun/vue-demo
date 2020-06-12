@@ -71,7 +71,6 @@ class Exposure {
 
   // 每个商品都会会通过全局唯一的Exposure的实例来执行该add方法,将自己添加进观察者中
   add(entry) {
-    console.log(2)
     console.log(entry.el)
     this._observer && this._observer.observe(entry.el)
   }

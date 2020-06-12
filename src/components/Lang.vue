@@ -10,7 +10,7 @@
       mode="horizontal"
     >
       <el-menu-item index="1">{{$t("music")}}</el-menu-item>
-      <el-menu-item index="2">{{$t("findMusic")}}</el-menu-item>
+      <el-menu-item index="2" @click="shopsList">{{$t("findMusic")}}</el-menu-item>
       <el-menu-item index="3">{{$t("myMusic")}}</el-menu-item>
       <el-menu-item index="4">{{$t("friend")}}</el-menu-item>
       <el-menu-item index="5">{{$t("musician")}}</el-menu-item>
@@ -40,6 +40,12 @@ export default {
       localStorage.setItem("locale", type);
       // 修改显示语言
       this.$i18n.locale = type;
+    },
+    shopsList() {
+      console.log("商品列表");
+      this.$router.push({
+        path: "/shops"
+      });
     }
   }
 };

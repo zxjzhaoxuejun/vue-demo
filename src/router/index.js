@@ -9,6 +9,9 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     name: 'Home',
+    meta: {
+      title: '首页'
+    },
     component: Home
   },
   ...homeRoute,
@@ -20,5 +23,15 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+//跳转前设置title
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title;
+  next();
+});
+//跳转后设置scroll为原点
+router.afterEach(() => {
+  window.scrollTo(0, 0);
+});
 
 export default router

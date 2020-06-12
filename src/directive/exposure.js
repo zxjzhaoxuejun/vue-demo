@@ -6,7 +6,7 @@
  * 取消对该DOM的观察；
  */
 import 'intersection-observer';
-import apiAxios from './../network/axios'
+// import apiAxios from './../network/axios'
 
 // 可以把节流的时间调大一点，默认是100ms
 IntersectionObserver.prototype['THROTTLE_TIMEOUT'] = 300;
